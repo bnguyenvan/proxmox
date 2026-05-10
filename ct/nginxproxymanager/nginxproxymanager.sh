@@ -95,10 +95,7 @@ function update_script() {
   ln -sf /usr/local/openresty/nginx/ /etc/nginx
   sed -i "s|\"version\": \"0.0.0\"|\"version\": \"$RELEASE\"|" backend/package.json
   sed -i "s|\"version\": \"0.0.0\"|\"version\": \"$RELEASE\"|" frontend/package.json
-  # NPM 2.14+ moved frontend files; patch branding only when target files exist.
-  if [[ -f frontend/js/i18n/messages.json ]]; then
-    sed -i 's|"fork-me": ".*"|"fork-me": "Proxmox VE Helper-Scripts"|' frontend/js/i18n/messages.json
-  fi
+  # NPM 2.14+ removed legacy i18n file paths, keep branding patches to existing files only.
   if [[ -f frontend/js/app/ui/footer/main.ejs ]]; then
     sed -i "s|https://github.com.*source=nginx-proxy-manager|https://helper-scripts.com|g" frontend/js/app/ui/footer/main.ejs
   fi
