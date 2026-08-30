@@ -1,0 +1,10 @@
+[Unit]
+Description=Incremental photo backup for Pharmacy POS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/backup-photos.sh
+StandardOutput=journal
+StandardError=journal

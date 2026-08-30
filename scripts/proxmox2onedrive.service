@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync Proxmox LXC backups to OneDrive
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/proxmox2onedrive_syc.sh
+StandardOutput=journal
+StandardError=journal

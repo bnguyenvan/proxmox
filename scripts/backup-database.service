@@ -1,0 +1,10 @@
+[Unit]
+Description=PostgreSQL nightly backup for Pharmacy POS
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pg_backup.sh
+StandardOutput=journal
+StandardError=journal

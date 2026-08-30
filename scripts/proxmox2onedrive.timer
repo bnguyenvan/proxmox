@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Proxmox OneDrive sync daily at 03:00
+
+[Timer]
+OnCalendar=*-*-* 3:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Two-way sync of Proxmox LXC dump files between nodes
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/proxmox-bisync.sh
+StandardOutput=journal
+StandardError=journal
